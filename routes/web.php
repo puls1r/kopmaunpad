@@ -13,8 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'LoginController@index');
+Route::get('/', 'HomeController@index');
 
+//penjualan
+Route::get('/penjualan', 'PenjualanController@index');
+Route::get('/penjualan/input' , 'PenjualanController@dataDiri');
+Route::post('/penjualan/input', 'PenjualanController@barang');
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
