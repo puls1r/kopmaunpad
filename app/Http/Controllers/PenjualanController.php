@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Barang;
+use App\DataDiri;
+use App\PenjualanTunai;
+use Illuminate\Support\Facades\DB;
 
 class PenjualanController extends Controller
 {
-    private $dataDiri; //variable untuk menampung data diri
     /**
      * Display a listing of the resource.
      *
@@ -28,8 +31,13 @@ class PenjualanController extends Controller
     }
 
     public function barang(Request $request){
-        $this->dataDiri = $request;
-        return view('penjualan.inputBarang');
+        $barang = Barang::all();
+        if($request->tipePenjualan == "tunai"){
+            return view('penjualan.tunai', ['barangs' => $barang, 'dataDiri' => $request]);
+        }
+        else{
+            return view('penjualan.kredit', ['barangs' => $barang]);
+        }
     }
 
     /**
@@ -40,7 +48,25 @@ class PenjualanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $idBarang = DB::table('barangs')->select('id')->where('namaBarang', $request->namaBarang)->where('harga', $request->harga)->first();
+        $data = new DataDiri;
+        $data->nama = $request->nama;
+        $data->noID = $request->noID;
+        $data->alamat = $request->alamat;
+        $data->noHP = $request->noHP;
+        $data->email = $request->email;
+        $data->save();
+
+
+        $penjualanTunai = new PenjualanTunai;
+        $penjualanTunai->user_id = $data->id;
+        $penjualanTunai->barang_id = $idBarang->id;
+        $penjualanTunai->kuantitas = $request->kuantitas;
+        $penjualanTunai->total = $request->total;
+        $penjualanTunai->tanggal = $request->tanggal;
+        $penjualanTunai->save();
+
+        return redirect('/penjualan');
     }
 
     /**

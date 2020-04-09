@@ -4,13 +4,14 @@
 <div class="container">
     <h1>Data Pembeli</h1>
     <form method="POST" action="">
+    @csrf
     <div class="form-group">
         <label for="nama">Nama Pembeli</label>
         <input required type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan Nama">
     </div>
     <div class="form-group">
-        <label for="nomorID">Nomor Identitas</label>
-        <input required type="text" class="form-control" id="nomorID" name="nomorID" placeholder="Masukkan Nomor Identitas">
+        <label for="noID">Nomor Identitas</label>
+        <input required type="text" class="form-control" id="noID" name="noID" placeholder="Masukkan Nomor Identitas">
     </div>
     <div class="form-group">
         <label for="alamat">Alamat</label>

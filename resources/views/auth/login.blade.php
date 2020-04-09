@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="{{asset('loginAsset/images/icons/favicon.ico')}}"/>
+	<link rel="icon" type="image/jpg" href="{{asset('images/favicon.jpg')}}"/>
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{asset('loginAsset/vendor/bootstrap/css/bootstrap.min.css')}}">
 <!--===============================================================================================-->
@@ -75,7 +75,7 @@
 					</div>
 				</form>
 
-				<div class="login100-more" style="background-color: {{asset('loginAsset/images/bg-01.jpg')}}" >
+				<div class="login100-more" style="background-image: url('/loginAsset/images/bg.jpg')" >
 				</div>
 			</div>
 		</div>
