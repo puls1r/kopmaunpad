@@ -19,5 +19,6 @@ Route::get('/', 'HomeController@index');
 Route::get('/penjualan', 'PenjualanController@index');
 Route::get('/penjualan/input' , 'PenjualanController@dataDiri');
 Route::post('/penjualan/input', 'PenjualanController@barang');
-Route::post('/saveTunai', 'PenjualanController@store');
+Route::post('/saveTunai', 'PenjualanController@storeTunai');
+Route::post('/saveKredit', 'PenjualanController@storeKredit');
 Auth::routes();

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Barang;
 use App\DataDiri;
 use App\PenjualanTunai;
+use App\PenjualanKredit;
 use Illuminate\Support\Facades\DB;
 
 class PenjualanController extends Controller
@@ -17,6 +18,7 @@ class PenjualanController extends Controller
      */
     public function index()
     {
+        $data = PenjualanTunai::all();
         return view('penjualan.index');
     }
 
@@ -36,7 +38,7 @@ class PenjualanController extends Controller
             return view('penjualan.tunai', ['barangs' => $barang, 'dataDiri' => $request]);
         }
         else{
-            return view('penjualan.kredit', ['barangs' => $barang]);
+            return view('penjualan.kredit', ['barangs' => $barang, 'dataDiri' => $request]);
         }
     }
 
@@ -46,7 +48,7 @@ class PenjualanController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function storeTunai(Request $request)
     {
         $idBarang = DB::table('barangs')->select('id')->where('namaBarang', $request->namaBarang)->where('harga', $request->harga)->first();
         $data = new DataDiri;
@@ -64,7 +66,33 @@ class PenjualanController extends Controller
         $penjualanTunai->kuantitas = $request->kuantitas;
         $penjualanTunai->total = $request->total;
         $penjualanTunai->tanggal = $request->tanggal;
+        $penjualanTunai->no_transaksi = $request->no_transaksi;
         $penjualanTunai->save();
+
+        return redirect('/penjualan');
+    }
+    public function storeKredit(Request $request)
+    {
+        $idBarang = DB::table('barangs')->select('id')->where('namaBarang', $request->namaBarang)->where('harga', $request->harga)->first();
+        $data = new DataDiri;
+        $data->nama = $request->nama;
+        $data->noID = $request->noID;
+        $data->alamat = $request->alamat;
+        $data->noHP = $request->noHP;
+        $data->email = $request->email;
+        $data->save();
+
+
+        $penjualanKredit = new PenjualanKredit;
+        $penjualanKredit->user_id = $data->id;
+        $penjualanKredit->barang_id = $idBarang->id;
+        $penjualanKredit->kuantitas = $request->kuantitas;
+        $penjualanKredit->total = $request->total;
+        $penjualanKredit->tanggal = $request->tanggal;
+        $penjualanKredit->deadline = $request->deadline;
+        $penjualanKredit->alamat_pengiriman = $request->alamat_pengiriman;
+        $penjualanKredit->no_transaksi = $request->no_transaksi;
+        $penjualanKredit->save();
 
         return redirect('/penjualan');
     }
