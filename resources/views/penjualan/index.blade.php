@@ -8,8 +8,8 @@
         <div class="col-4 align-self-end"><a href="/penjualan/input" class="btn btn-primary mb-2 float-right">Tambah Penjualan</a></div>
     </div>
     <ul class="nav nav-tabs nav-fill">
-        <li><a class="nav-item nav-link active"data-toggle="tab" href="#tunai">Tunai</a></li>
-        <li><a class="nav-item nav-link" data-toggle="tab" href="#kredit">Kredit</a></li>
+        <li><a style="font-weight:bold" class="nav-item nav-link active"data-toggle="tab" href="#tunai">Tunai</a></li>
+        <li><a style="font-weight:bold" class="nav-item nav-link" data-toggle="tab" href="#kredit">Kredit</a></li>
      </ul>
     <div class="tab-content">
         <div id="tunai" class="tab-pane fade show active">
@@ -20,31 +20,21 @@
                     <th scope="col">No. Transaksi</th>
                     <th scope="col">Nama Pembeli</th>
                     <th scope="col">Tanggal Transaksi</th>
+                    <th scope="col">Total</th>
                     <th scope="col">Kwitansi</th>
                     </tr>
                 </thead>
                 <tbody>
+                @foreach($dataTunai as $data)
                     <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>@mdo</td>
+                    <th scope="row">{{$loop->iteration}}</th>
+                    <td>{{$data->no_transaksi}}</td>
+                    <td>{{$data->nama}}</td>
+                    <td>{{$data->tanggal}}</td>
+                    <td>Rp. {{$data->total}}</td>
+                    <td><a class="btn btn-dark">Lihat</a></td>
                     </tr>
-                    <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                    <td>@fat</td>
-                    </tr>
-                    <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                    <td>@twitter</td>
-                    </tr>
+                @endforeach
                 </tbody>
             </table>
         </div>
@@ -56,31 +46,30 @@
                     <th scope="col">No. Transaksi</th>
                     <th scope="col">Nama Pembeli</th>
                     <th scope="col">Tanggal Transaksi</th>
+                    <th scope="col">Deadline</th>
+                    <th scope="col">Status Pembayaran</th>
                     <th scope="col">Kwitansi</th>
                     </tr>
                 </thead>
                 <tbody>
+                @foreach($dataKredit as $data)
                     <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>@mdo</td>
+                    <th scope="row">{{$loop->iteration}}</th>
+                    <td>{{$data->no_transaksi}}</td>
+                    <td>{{$data->nama}}</td>
+                    <td>{{$data->tanggal}}</td>
+                    <td>{{$data->deadline}}</td>
+                    <td>@if($data->status == 1)Lunas
+                        @else
+                        Belum Lunas
+                        @endif
+                    </td>
+                    <td><button form="invoice" type="submit" class="btn btn-primary">Lihat</button></td>
                     </tr>
-                    <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                    <td>@fat</td>
-                    </tr>
-                    <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                    <td>@twitter</td>
-                    </tr>
+                    <form action="/invoice" method="GET" id="invoice">
+                        <input type="text" name="id" value="{{$data->no_transaksi}}" hidden>
+                    </form>
+                @endforeach
                 </tbody>
             </table>
         </div>

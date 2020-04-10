@@ -18,8 +18,18 @@ class PenjualanController extends Controller
      */
     public function index()
     {
-        $data = PenjualanTunai::all();
-        return view('penjualan.index');
+        $dataTunai = DB::table('penjualan_tunais')
+                    ->join('data_diris','penjualan_tunais.user_id','=','data_diris.id')
+                    ->select('penjualan_tunais.*','data_diris.nama')
+                    ->get();
+        $dataKredit = DB::table('penjualan_kredits')
+                    ->join('data_diris','penjualan_kredits.user_id','=','data_diris.id')
+                    ->select('penjualan_kredits.*','data_diris.nama')
+                    ->get();
+        return view('penjualan.index', [
+            'dataTunai' => $dataTunai,
+            'dataKredit' => $dataKredit,
+        ]);
     }
 
     /**
@@ -92,6 +102,7 @@ class PenjualanController extends Controller
         $penjualanKredit->deadline = $request->deadline;
         $penjualanKredit->alamat_pengiriman = $request->alamat_pengiriman;
         $penjualanKredit->no_transaksi = $request->no_transaksi;
+        $penjualanKredit->status = 0;
         $penjualanKredit->save();
 
         return redirect('/penjualan');
@@ -103,20 +114,26 @@ class PenjualanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function showInvoice(Request $request)
     {
-        //
+        $data = DB::table('penjualan_tunais')->where('no_transaksi', $request->id)
+                ->join('data_diris','penjualan_tunais.user_id','=','data_diris.id')
+                ->select('penjualan_tunais.*','data_diris.*')
+                ->first();
+        if($data==NULL){
+            return $this->showInvoiceKredit($request->id);
+        }
+        else{
+            return view('penjualan.invoice', ['data' => $data]);
+        }
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+    public function showInvoiceKredit($id){
+        $data = DB::table('penjualan_kredits')->where('no_transaksi', $id)
+                ->join('data_diris','penjualan_kredits.user_id','=','data_diris.id')
+                ->select('penjualan_kredits.*','data_diris.*')
+                ->first();
+        return view('penjualan.invoice', ['data' => $data]);
     }
 
     /**
