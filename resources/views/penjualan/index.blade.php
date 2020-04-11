@@ -32,8 +32,11 @@
                     <td>{{$data->nama}}</td>
                     <td>{{$data->tanggal}}</td>
                     <td>Rp. {{$data->total}}</td>
-                    <td><a class="btn btn-dark">Lihat</a></td>
+                    <td><button form="invoiceTunai{{$loop->iteration}}" type="submit" class="btn btn-primary">Lihat</button></td>
                     </tr>
+                    <form action="/invoice" method="GET" id="invoiceTunai{{$loop->iteration}}">
+                        <input type="text" name="id" value="{{$data->no_transaksi}}" hidden>
+                    </form>
                 @endforeach
                 </tbody>
             </table>
@@ -64,9 +67,9 @@
                         Belum Lunas
                         @endif
                     </td>
-                    <td><button form="invoice" type="submit" class="btn btn-primary">Lihat</button></td>
+                    <td><button form="invoice{{$loop->iteration}}" type="submit" class="btn btn-primary">Lihat</button></td>
                     </tr>
-                    <form action="/invoice" method="GET" id="invoice">
+                    <form action="/invoice" method="GET" id="invoice{{$loop->iteration}}">
                         <input type="text" name="id" value="{{$data->no_transaksi}}" hidden>
                     </form>
                 @endforeach

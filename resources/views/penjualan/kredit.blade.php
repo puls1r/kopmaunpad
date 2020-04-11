@@ -37,10 +37,6 @@
         <input required type="date" class="form-control" id="deadline" name="deadline">
     </div>
     <div class="form-group">
-        <label for="no_transaksi">Nomor Transaksi</label>
-        <input required type="text" class="form-control" id="no_transaksi" name="no_transaksi">
-    </div>
-    <div class="form-group">
         <label for="total">Total</label>
         <input required type="text" class="form-control" id="total" name="total" readonly>
     </div>

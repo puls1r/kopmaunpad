@@ -58,8 +58,12 @@
                     <div class="panel panel-default height">
                         <div class="panel-heading">Shipping Address</div>
                         <div class="panel-body">
+                            @isset($data->alamat_pengiriman)
                             <strong>{{$data->nama}}:</strong><br>
                             {{$data->alamat_pengiriman}}<br>
+                            @else
+                            -
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -85,24 +89,11 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>Samsung Galaxy S5</td>
-                                    <td class="text-center">$900</td>
-                                    <td class="text-center">1</td>
-                                    <td class="text-right">$900</td>
+                                    <td>{{$data->namaBarang}}</td>
+                                    <td class="text-center">Rp. {{$data->harga}}</td>
+                                    <td class="text-center">{{$data->kuantitas}}</td>
+                                    <td class="text-right">Rp. {{$data->harga * $data->kuantitas}}</td>
                                 </tr>
-                                <tr>
-                                    <td>Samsung Galaxy S5 Extra Battery</td>
-                                    <td class="text-center">$30.00</td>
-                                    <td class="text-center">1</td>
-                                    <td class="text-right">$30.00</td>
-                                </tr>
-                                <tr>
-                                    <td>Screen protector</td>
-                                    <td class="text-center">$7</td>
-                                    <td class="text-center">4</td>
-                                    <td class="text-right">$28</td>
-                                </tr>
-                                <tr>
                                     <td class="highrow"></td>
                                     <td class="highrow"></td>
                                     <td class="highrow text-center"><strong>Subtotal</strong></td>

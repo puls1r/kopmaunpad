@@ -76,7 +76,9 @@ class PenjualanController extends Controller
         $penjualanTunai->kuantitas = $request->kuantitas;
         $penjualanTunai->total = $request->total;
         $penjualanTunai->tanggal = $request->tanggal;
-        $penjualanTunai->no_transaksi = $request->no_transaksi;
+        $numpadded = sprintf("%05d", getNextId('penjualan_tunais'));
+        $prefix = "TN";
+        $penjualanTunai->no_transaksi = $prefix.$numpadded;
         $penjualanTunai->save();
 
         return redirect('/penjualan');
@@ -101,7 +103,9 @@ class PenjualanController extends Controller
         $penjualanKredit->tanggal = $request->tanggal;
         $penjualanKredit->deadline = $request->deadline;
         $penjualanKredit->alamat_pengiriman = $request->alamat_pengiriman;
-        $penjualanKredit->no_transaksi = $request->no_transaksi;
+        $numpadded = sprintf("%05d", getNextId('penjualan_kredits'));
+        $prefix = "KR";
+        $penjualanKredit->no_transaksi = $prefix.$numpadded;
         $penjualanKredit->status = 0;
         $penjualanKredit->save();
 
@@ -118,7 +122,8 @@ class PenjualanController extends Controller
     {
         $data = DB::table('penjualan_tunais')->where('no_transaksi', $request->id)
                 ->join('data_diris','penjualan_tunais.user_id','=','data_diris.id')
-                ->select('penjualan_tunais.*','data_diris.*')
+                ->join('barangs','penjualan_tunais.barang_id','=','barangs.id')
+                ->select('penjualan_tunais.*','data_diris.*','barangs.*')
                 ->first();
         if($data==NULL){
             return $this->showInvoiceKredit($request->id);
@@ -131,7 +136,8 @@ class PenjualanController extends Controller
     public function showInvoiceKredit($id){
         $data = DB::table('penjualan_kredits')->where('no_transaksi', $id)
                 ->join('data_diris','penjualan_kredits.user_id','=','data_diris.id')
-                ->select('penjualan_kredits.*','data_diris.*')
+                ->join('barangs','penjualan_kredits.barang_id','=','barangs.id')
+                ->select('penjualan_kredits.*','data_diris.*','barangs.*')
                 ->first();
         return view('penjualan.invoice', ['data' => $data]);
     }
