@@ -102,7 +102,7 @@
 	text-transform: uppercase;
 }
 
-.payment-form .card-details button{
+.payment-form .card-details button, a{
 	margin-top: 0.6em;
 	padding:12px 0;
 	font-weight: 600;
@@ -135,7 +135,7 @@
     	padding: 40px 40px 30px; 
     }
 
-  	.payment-form .card-details button {
+  	.payment-form .card-details button, a{
     	margin-top: 2em; 
     } 
 }

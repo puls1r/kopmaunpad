@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <h1>Input Barang</h1>
-    <form method="POST" action="/saveKredit">
+    <form method="POST" action="/checkout">
     @csrf
     @php($index=1)
     <div class="form-row">

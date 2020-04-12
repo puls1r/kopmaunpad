@@ -13,9 +13,10 @@
     <section class="payment-form dark">
       <div class="container">
         <div class="block-heading">
-          <h2>Payment Tunai</h2>
+          <h2>Payment</h2>
         </div>
-        <form>
+        <form id="savePembelian" method="POST" action="/saveTunai">
+        @csrf
           <div class="products">
             <h3 class="title">Checkout</h3>
             <div class="item">
@@ -51,36 +52,23 @@
               <p class="item-description">{{$data->harga5}} X {{$data->kuantitas5}}</p>
             </div>
             @endif
-            <div class="total">Total<span class="price">$320</span></div>
+            <div class="total">Total<span class="price">{{$data->totalPembelian}}</span></div>
           </div>
           <div class="card-details">
-            <h3 class="title">Credit Card Details</h3>
-            <div class="row">
-              <div class="form-group col-sm-7">
-                <label for="card-holder">Card Holder</label>
-                <input id="card-holder" type="text" class="form-control" placeholder="Card Holder" aria-label="Card Holder" aria-describedby="basic-addon1">
+            <h3 class="title">Billing Details</h3>
+            <p><b>Nama Pembeli :</b> {{$data->nama}}</p>
+            <p><b>Alamat :</b> {{$data->alamat}}</p>
+            <p><b>No HP :</b> {{$data->noHP}}</p>
+            <p><b>Email :</b> {{$data->email}}</p>
+              <div class="row">
+              <div class="form-group col-sm-6">
+                  <button type="button" class="btn btn-danger btn-block" onclick="javascript:window.location.href='/penjualan';">Cancel</button>
               </div>
-              <div class="form-group col-sm-5">
-                <label for="">Expiration Date</label>
-                <div class="input-group expiration-date">
-                  <input type="text" class="form-control" placeholder="MM" aria-label="MM" aria-describedby="basic-addon1">
-                  <span class="date-separator">/</span>
-                  <input type="text" class="form-control" placeholder="YY" aria-label="YY" aria-describedby="basic-addon1">
-                </div>
+              <div class="form-group col-sm-6">
+                  <button class="btn btn-success btn-block" type="submit">Proceed</button>
               </div>
-              <div class="form-group col-sm-8">
-                <label for="card-number">Card Number</label>
-                <input id="card-number" type="text" class="form-control" placeholder="Card Number" aria-label="Card Holder" aria-describedby="basic-addon1">
-              </div>
-              <div class="form-group col-sm-4">
-                <label for="cvc">CVC</label>
-                <input id="cvc" type="text" class="form-control" placeholder="CVC" aria-label="Card Holder" aria-describedby="basic-addon1">
-              </div>
-              <div class="form-group col-sm-12">
-                <button type="button" class="btn btn-primary btn-block">Proceed</button>
               </div>
               <!-- hidden form untuk data -->
-              <form action="/saveTunai">
                 <input type="text" name="nama" value="{{$data->nama}}" hidden>
                 <input type="text" name="noID" value="{{$data->noID}}" hidden>
                 <input type="text" name="alamat" value="{{$data->alamat}}" hidden>
@@ -103,7 +91,6 @@
                 <input type="text" name="harga3" value="{{$data->harga3}}" hidden>
                 <input type="text" name="harga4" value="{{$data->harga4}}" hidden>
                 <input type="text" name="harga5" value="{{$data->harga5}}" hidden>
-              </form>
             </div>
           </div>
         </form>
