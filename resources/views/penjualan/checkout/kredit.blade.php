@@ -19,9 +19,9 @@
           <div class="products">
             <h3 class="title">Checkout</h3>
             <div class="item">
-              <span class="price">$200</span>
-              <p class="item-name">Product 1</p>
-              <p class="item-description">Lorem ipsum dolor sit amet</p>
+              <span class="price">{{$data->totalharga1}}</span>
+              <p class="item-name">{{$data->namaBarang1}}</p>
+              <p class="item-description">{{$data->harga1}} X {{$data->kuantitas1}}</p>
             </div>
             <div class="item">
               <span class="price">$120</span>
@@ -56,6 +56,10 @@
               <div class="form-group col-sm-12">
                 <button type="button" class="btn btn-primary btn-block">Proceed</button>
               </div>
+              <!-- hidden form untuk data -->
+              <form action="/save">
+              
+              </form>
             </div>
           </div>
         </form>

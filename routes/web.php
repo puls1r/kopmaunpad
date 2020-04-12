@@ -22,5 +22,5 @@ Route::post('/penjualan/input', 'PenjualanController@barang');
 Route::post('/saveTunai', 'PenjualanController@storeTunai');
 Route::post('/saveKredit', 'PenjualanController@storeKredit');
 Route::get('/invoice', 'PenjualanController@showInvoice');
-Route::get('/checkout','PenjualanController@checkout');
+Route::post('/checkout','PenjualanController@checkout');
 Auth::routes();

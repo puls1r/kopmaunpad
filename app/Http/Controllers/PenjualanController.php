@@ -238,7 +238,12 @@ class PenjualanController extends Controller
     }
 
     public function checkout(Request $request){
-        return view('penjualan.checkout');
+        if(isset($request->deadline)){
+            return view('penjualan.checkout.kredit', ['data' => $request]);
+        }
+        else{
+            return view('penjualan.checkout.tunai', ['data' => $request]);
+        }
     }
     /**
      * Update the specified resource in storage.
