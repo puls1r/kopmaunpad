@@ -37,9 +37,14 @@
                     <div class="panel panel-default height">
                         <div class="panel-heading">Payment Information</div>
                         <div class="panel-body">
-                            <strong>Card Name:</strong> Visa<br>
-                            <strong>Card Number:</strong> ***** 332<br>
-                            <strong>Exp Date:</strong> 09/2020<br>
+                            <strong>Tanggal Transaksi:</strong> {{$data->tanggal}}<br>
+                            <strong>Tanggal Jatuh Tempo: </strong> 
+                            @isset($data->deadline)
+                            {{$data->deadline}}
+                            @else
+                            <b>-</b>
+                            @endisset
+                            <br>
                         </div>
                     </div>
                 </div>
@@ -88,28 +93,30 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach($barangPembelian as $barang)
                                 <tr>
-                                    <td>{{$data->namaBarang}}</td>
-                                    <td class="text-center">Rp. {{$data->harga}}</td>
-                                    <td class="text-center">{{$data->kuantitas}}</td>
-                                    <td class="text-right">Rp. {{$data->harga * $data->kuantitas}}</td>
+                                    <td>{{$barang->namaBarang}}</td>
+                                    <td class="text-center">Rp. {{$barang->harga}}</td>
+                                    <td class="text-center">{{$barang->kuantitas}}</td>
+                                    <td class="text-right">Rp. {{$barang->harga * $barang->kuantitas}}</td>
+                                @endforeach
                                 </tr>
                                     <td class="highrow"></td>
                                     <td class="highrow"></td>
                                     <td class="highrow text-center"><strong>Subtotal</strong></td>
-                                    <td class="highrow text-right">$958.00</td>
+                                    <td class="highrow text-right">Rp.{{$data->total}}</td>
                                 </tr>
                                 <tr>
                                     <td class="emptyrow"></td>
                                     <td class="emptyrow"></td>
                                     <td class="emptyrow text-center"><strong>Shipping</strong></td>
-                                    <td class="emptyrow text-right">$20</td>
+                                    <td class="emptyrow text-right">Rp.15000</td>
                                 </tr>
                                 <tr>
                                     <td class="emptyrow"><i class="fa fa-barcode iconbig"></i></td>
                                     <td class="emptyrow"></td>
                                     <td class="emptyrow text-center"><strong>Total</strong></td>
-                                    <td class="emptyrow text-right">$978.00</td>
+                                    <td class="emptyrow text-right">Rp.{{$data->total + 15000}}</td>
                                 </tr>
                             </tbody>
                         </table>

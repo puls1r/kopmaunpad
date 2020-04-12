@@ -7,6 +7,7 @@ use App\Barang;
 use App\DataDiri;
 use App\PenjualanTunai;
 use App\PenjualanKredit;
+use App\BarangPembelian;
 use Illuminate\Support\Facades\DB;
 
 class PenjualanController extends Controller
@@ -60,7 +61,6 @@ class PenjualanController extends Controller
      */
     public function storeTunai(Request $request)
     {
-        $idBarang = DB::table('barangs')->select('id')->where('namaBarang', $request->namaBarang)->where('harga', $request->harga)->first();
         $data = new DataDiri;
         $data->nama = $request->nama;
         $data->noID = $request->noID;
@@ -72,15 +72,57 @@ class PenjualanController extends Controller
 
         $penjualanTunai = new PenjualanTunai;
         $penjualanTunai->user_id = $data->id;
-        $penjualanTunai->barang_id = $idBarang->id;
-        $penjualanTunai->kuantitas = $request->kuantitas;
-        $penjualanTunai->total = $request->total;
+        $penjualanTunai->total = $request->totalPembelian;
         $penjualanTunai->tanggal = $request->tanggal;
         $numpadded = sprintf("%05d", getNextId('penjualan_tunais'));
         $prefix = "TN";
         $penjualanTunai->no_transaksi = $prefix.$numpadded;
         $penjualanTunai->save();
 
+        if($request->namaBarang1 != "Pilih"){
+        $idBarang1 = DB::table('barangs')->select('id')->where('namaBarang', $request->namaBarang1)->where('harga', $request->harga1)->first();
+        $barangPembelian = new BarangPembelian;
+        $barangPembelian->no_transaksi = $penjualanTunai->no_transaksi;
+        $barangPembelian->barang_id = $idBarang1->id;
+        $barangPembelian->kuantitas = $request->kuantitas1;
+        $barangPembelian->save();
+        }
+
+        if($request->namaBarang2 != "Pilih" && $request->namaBarang2 != NULL){
+            $idBarang2 = DB::table('barangs')->select('id')->where('namaBarang', $request->namaBarang2)->where('harga', $request->harga2)->first();
+            $barangPembelian = new BarangPembelian;
+            $barangPembelian->no_transaksi = $penjualanTunai->no_transaksi;
+            $barangPembelian->barang_id = $idBarang2->id;
+            $barangPembelian->kuantitas = $request->kuantitas2;
+            $barangPembelian->save();
+            }
+
+        if($request->namaBarang3 != "Pilih" && $request->namaBarang3 != NULL){
+            $idBarang3 = DB::table('barangs')->select('id')->where('namaBarang', $request->namaBarang3)->where('harga', $request->harga3)->first();
+            $barangPembelian = new BarangPembelian;
+            $barangPembelian->no_transaksi = $penjualanTunai->no_transaksi;
+            $barangPembelian->barang_id = $idBarang3->id;
+            $barangPembelian->kuantitas = $request->kuantitas3;
+            $barangPembelian->save();
+            }
+
+        if($request->namaBarang4 != "Pilih" && $request->namaBarang4 != NULL){
+            $idBarang4 = DB::table('barangs')->select('id')->where('namaBarang', $request->namaBarang4)->where('harga', $request->harga4)->first();
+            $barangPembelian = new BarangPembelian;
+            $barangPembelian->no_transaksi = $penjualanTunai->no_transaksi;
+            $barangPembelian->barang_id = $idBarang4->id;
+            $barangPembelian->kuantitas = $request->kuantitas4;
+            $barangPembelian->save();
+            }
+
+        if($request->namaBarang5 != "Pilih" && $request->namaBarang5 != NULL){
+            $idBarang5 = DB::table('barangs')->select('id')->where('namaBarang', $request->namaBarang5)->where('harga', $request->harga5)->first();
+            $barangPembelian = new BarangPembelian;
+            $barangPembelian->no_transaksi = $penjualanTunai->no_transaksi;
+            $barangPembelian->barang_id = $idBarang5->id;
+            $barangPembelian->kuantitas = $request->kuantitas5;
+            $barangPembelian->save();
+            }
         return redirect('/penjualan');
     }
     public function storeKredit(Request $request)
@@ -97,9 +139,7 @@ class PenjualanController extends Controller
 
         $penjualanKredit = new PenjualanKredit;
         $penjualanKredit->user_id = $data->id;
-        $penjualanKredit->barang_id = $idBarang->id;
-        $penjualanKredit->kuantitas = $request->kuantitas;
-        $penjualanKredit->total = $request->total;
+        $penjualanKredit->total = $request->totalPembelian;
         $penjualanKredit->tanggal = $request->tanggal;
         $penjualanKredit->deadline = $request->deadline;
         $penjualanKredit->alamat_pengiriman = $request->alamat_pengiriman;
@@ -108,6 +148,51 @@ class PenjualanController extends Controller
         $penjualanKredit->no_transaksi = $prefix.$numpadded;
         $penjualanKredit->status = 0;
         $penjualanKredit->save();
+
+        if($request->namaBarang1 != "Pilih"){
+            $idBarang1 = DB::table('barangs')->select('id')->where('namaBarang', $request->namaBarang1)->where('harga', $request->harga1)->first();
+            $barangPembelian = new BarangPembelian;
+            $barangPembelian->no_transaksi = $penjualanKredit->no_transaksi;
+            $barangPembelian->barang_id = $idBarang1->id;
+            $barangPembelian->kuantitas = $request->kuantitas1;
+            $barangPembelian->save();
+            }
+    
+        if($request->namaBarang2 != "Pilih" && $request->namaBarang2 != NULL){
+            $idBarang2 = DB::table('barangs')->select('id')->where('namaBarang', $request->namaBarang2)->where('harga', $request->harga2)->first();
+            $barangPembelian = new BarangPembelian;
+            $barangPembelian->no_transaksi = $penjualanKredit->no_transaksi;
+            $barangPembelian->barang_id = $idBarang2->id;
+            $barangPembelian->kuantitas = $request->kuantitas2;
+            $barangPembelian->save();
+            }
+
+        if($request->namaBarang3 != "Pilih" && $request->namaBarang3 != NULL){
+            $idBarang3 = DB::table('barangs')->select('id')->where('namaBarang', $request->namaBarang3)->where('harga', $request->harga3)->first();
+            $barangPembelian = new BarangPembelian;
+            $barangPembelian->no_transaksi = $penjualanKredit->no_transaksi;
+            $barangPembelian->barang_id = $idBarang3->id;
+            $barangPembelian->kuantitas = $request->kuantitas3;
+            $barangPembelian->save();
+            }
+
+        if($request->namaBarang4 != "Pilih" && $request->namaBarang4 != NULL){
+            $idBarang4 = DB::table('barangs')->select('id')->where('namaBarang', $request->namaBarang4)->where('harga', $request->harga4)->first();
+            $barangPembelian = new BarangPembelian;
+            $barangPembelian->no_transaksi = $penjualanKredit->no_transaksi;
+            $barangPembelian->barang_id = $idBarang4->id;
+            $barangPembelian->kuantitas = $request->kuantitas4;
+            $barangPembelian->save();
+            }
+
+        if($request->namaBarang5 != "Pilih" && $request->namaBarang5 != NULL){
+            $idBarang5 = DB::table('barangs')->select('id')->where('namaBarang', $request->namaBarang5)->where('harga', $request->harga5)->first();
+            $barangPembelian = new BarangPembelian;
+            $barangPembelian->no_transaksi = $penjualanKredit->no_transaksi;
+            $barangPembelian->barang_id = $idBarang5->id;
+            $barangPembelian->kuantitas = $request->kuantitas5;
+            $barangPembelian->save();
+            }
 
         return redirect('/penjualan');
     }
@@ -122,26 +207,39 @@ class PenjualanController extends Controller
     {
         $data = DB::table('penjualan_tunais')->where('no_transaksi', $request->id)
                 ->join('data_diris','penjualan_tunais.user_id','=','data_diris.id')
-                ->join('barangs','penjualan_tunais.barang_id','=','barangs.id')
-                ->select('penjualan_tunais.*','data_diris.*','barangs.*')
+                ->select('penjualan_tunais.*','data_diris.*')
                 ->first();
+        $barangPembelian = DB::table('penjualan_tunais')->where('penjualan_tunais.no_transaksi', $request->id)
+                ->join('data_diris','penjualan_tunais.user_id','=','data_diris.id')
+                ->join('barang_pembelians','penjualan_tunais.no_transaksi','=','barang_pembelians.no_transaksi')
+                ->join('barangs','barang_pembelians.barang_id','=','barangs.id')
+                ->select('penjualan_tunais.*','data_diris.*','barangs.*','barang_pembelians.*')
+                ->get();
         if($data==NULL){
             return $this->showInvoiceKredit($request->id);
         }
         else{
-            return view('penjualan.invoice', ['data' => $data]);
+            return view('penjualan.invoice', ['data' => $data, 'barangPembelian' => $barangPembelian]);
         }
     }
 
     public function showInvoiceKredit($id){
         $data = DB::table('penjualan_kredits')->where('no_transaksi', $id)
                 ->join('data_diris','penjualan_kredits.user_id','=','data_diris.id')
-                ->join('barangs','penjualan_kredits.barang_id','=','barangs.id')
-                ->select('penjualan_kredits.*','data_diris.*','barangs.*')
+                ->select('penjualan_kredits.*','data_diris.*')
                 ->first();
-        return view('penjualan.invoice', ['data' => $data]);
+        $barangPembelian = DB::table('penjualan_kredits')->where('penjualan_kredits.no_transaksi', $id)
+                ->join('data_diris','penjualan_kredits.user_id','=','data_diris.id')
+                ->join('barang_pembelians','penjualan_kredits.no_transaksi','=','barang_pembelians.no_transaksi')
+                ->join('barangs','barang_pembelians.barang_id','=','barangs.id')
+                ->select('penjualan_kredits.*','data_diris.*','barangs.*','barang_pembelians.*')
+                ->get();
+        return view('penjualan.invoice', ['data' => $data, 'barangPembelian' => $barangPembelian]);
     }
 
+    public function checkout(Request $request){
+        return view('penjualan.checkout');
+    }
     /**
      * Update the specified resource in storage.
      *

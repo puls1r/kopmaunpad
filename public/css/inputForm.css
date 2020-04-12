@@ -1,23 +1,21 @@
-input[type=text], input[type=date], input[type=email]{
+input[type=text], input[type=date], input[type=email], select{
     width: 100%;
     padding: 12px 20px;
     display: inline-block;
     border: 1px solid #ccc;
     border-radius: 4px;
-    box-sizing: border-box;
     font-size: 15px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
   }
-select{
-    width: 100%;
-    padding: 12px 20px;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    font-size: 15px;
-}
-
 
 .form-group label{
     font-size: 15px;
+}
+
+.form-control{
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 15px;
 }
