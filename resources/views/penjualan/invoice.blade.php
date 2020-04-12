@@ -19,8 +19,7 @@
     <div class="row">
         <div class="col-xs-12">
             <div class="text-center">
-                <i class="fa fa-search-plus pull-left icon"></i>
-                <h2>Invoice for purchase {{$data->no_transaksi}}</h2>
+                <h2>Nota Pembelian #{{$data->no_transaksi}}</h2>
             </div>
             <hr>
             <div class="row">
@@ -50,12 +49,19 @@
                 </div>
                 <div class="col-xs-12 col-md-3 col-lg-3">
                     <div class="panel panel-default height">
-                        <div class="panel-heading">Order Preferences</div>
+                        <div class="panel-heading">Status Pembayaran</div>
                         <div class="panel-body">
-                            <strong>Gift:</strong> No<br>
-                            <strong>Express Delivery:</strong> Yes<br>
-                            <strong>Insurance:</strong> No<br>
-                            <strong>Coupon:</strong> No<br>
+                            <strong>Status Pembayaran:</strong> 
+                            @isset($data->deadline)
+                                @if($data->status == 0)
+                                Belum Lunas<br>
+                                @else
+                                Lunas<br>
+                                @endif
+                            @else
+                                Lunas
+                                <br>
+                            @endisset
                         </div>
                     </div>
                 </div>
@@ -120,6 +126,13 @@
                                 </tr>
                             </tbody>
                         </table>
+                        @if(Request::get('submit')=='yes')
+                        <button class="btn btn-success" form="submitForm">Bayar</button>
+                        <form id="submitForm" action="/submitPembayaran" method="post">
+                        @csrf
+                            <input type="text" name="no_transaksi" value="{{$data->no_transaksi}}" hidden>
+                        </form>
+                        @endif
                     </div>
                 </div>
             </div>

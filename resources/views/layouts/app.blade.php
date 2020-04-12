@@ -26,14 +26,14 @@
 				<div class="p-4">
 		  		<h1><a href="/" class="logo">Kopma Unpad</a></h1>
 	        <ul class="list-unstyled components mb-5">
-	          <li class="active {{ (request()->is('/')) ? 'active' : '' }}">
+	          <li class="active {{ (request()->is('/home')) ? 'active' : '' }}">
 	            <a href="/"><span class=" mr-3"></span>Dashboard</a>
 	          </li>
 	          <li class="{{ (request()->is('penjualan*')) ? 'active' : '' }}">
 	              <a href="/penjualan"><span class=" mr-3"></span>Penjualan</a>
 	          </li>
 	          <li class="{{ (request()->is('pembelian*')) ? 'active' : '' }}">
-              <a href="#"><span class=" mr-3"></span>Pembelian</a>
+              <a href="/pembayaran"><span class=" mr-3"></span>Pembayaran</a>
 	          </li>
 	          <li class="{{ (request()->is('dataBarang*')) ? 'active' : '' }}">
               <a href="#"><span class=" mr-3"></span>Data Barang</a>

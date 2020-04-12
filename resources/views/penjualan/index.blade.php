@@ -3,6 +3,11 @@
 @section('title', 'Penjualan - Kopma Unpad')
 @section('content')
 <div class="container">
+    @if(session()->has('message'))
+        <div class="alert alert-success">
+            {{ session()->get('message') }}
+        </div>
+    @endif
     <div class="row justify-content-between">
         <div class="col-4"><p style="padding:0;margin:0;font-size:30px;color:black;font-weight:bold">Penjualan</p></div>
         <div class="col-4 align-self-end"><a href="/penjualan/input" class="btn btn-primary mb-2 float-right">Tambah Penjualan</a></div>

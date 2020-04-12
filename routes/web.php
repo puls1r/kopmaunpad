@@ -23,4 +23,8 @@ Route::post('/saveTunai', 'PenjualanController@storeTunai');
 Route::post('/saveKredit', 'PenjualanController@storeKredit');
 Route::get('/invoice', 'PenjualanController@showInvoice');
 Route::post('/checkout','PenjualanController@checkout');
+
+//pembayaran
+Route::get('/pembayaran', 'PembayaranController@index');
+Route::post('/submitPembayaran', 'PembayaranController@submitPembayaran');
 Auth::routes();
