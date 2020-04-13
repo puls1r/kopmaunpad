@@ -61,7 +61,7 @@
         <tr>
             <td>Nomor Handphone </td>
             <td>:</td>
-            <td>0878787770097</td>
+            <td>{{$user->noHP}}</td>
         </tr>
    </table>
    <p>Selanjutnya nama tersebut diatas akan disebut sebagai Pihak II (kedua)</p>
@@ -95,8 +95,8 @@
             <td> </td>
         </tr>
         <tr>
-            <td>Adisti</td>
-            <td>Doni</td>
+            <td>{{$data->nama}}</td>
+            <td>{{$user->name}}</td>
         </tr>
     </table>
 </body>
