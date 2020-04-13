@@ -133,6 +133,10 @@
                             <input type="text" name="no_transaksi" value="{{$data->no_transaksi}}" hidden>
                         </form>
                         @endif
+                        @if($data->total >= 200 && isset($data->deadline))
+                        <button class="btn btn-primary" type="button">Surat Perjanjian</button>
+                        @endif
+                        
                     </div>
                 </div>
             </div>

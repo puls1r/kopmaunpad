@@ -63,10 +63,15 @@
             <p><b>Alamat Pengiriman :</b> {{$data->alamat_pengiriman}}</p>
             <p><b>Tanggal Jatuh Tempo :</b> {{$data->deadline}}</p>
               <div class="row">
-              <div class="form-group col-sm-6">
+              <div class="form-group col-12">
+                  <button type="button" class="btn btn-primary btn-block" onclick="javascript:window.location.href='/penjualan';">Surat Perjanjian</button>
+              </div>
+              </div>
+              <div class="row">
+              <div class="form-group col-6">
                   <button type="button" class="btn btn-danger btn-block" onclick="javascript:window.location.href='/penjualan';">Cancel</button>
               </div>
-              <div class="form-group col-sm-6">
+              <div class="form-group col-6">
                   <button class="btn btn-success btn-block" type="submit">Proceed</button>
               </div>
               </div>
