@@ -28,3 +28,14 @@ Route::post('/checkout','PenjualanController@checkout');
 Route::get('/pembayaran', 'PembayaranController@index');
 Route::post('/submitPembayaran', 'PembayaranController@submitPembayaran');
 Auth::routes();
+
+//print
+Route::get('/suratPerjanjian/{no_transaksi}', [ 'as' => 'suratPerjanjian', 'uses' => 'PrintPDF@suratPerjanjian']);
+Route::get('printEx', function(){
+    return view('surat_perjanjian');
+});
+
+//barang
+Route::get('/listBarang','BarangController@index');
+Route::get('/listBarang/input', 'BarangController@input');
+Route::post('/listBarang/input', 'BarangController@store');

@@ -36,7 +36,7 @@
               <a href="/pembayaran"><span class=" mr-3"></span>Pembayaran</a>
 	          </li>
 	          <li class="{{ (request()->is('dataBarang*')) ? 'active' : '' }}">
-              <a href="#"><span class=" mr-3"></span>Data Barang</a>
+              <a href="/listBarang"><span class=" mr-3"></span>Data Barang</a>
             </li>
             <li>
               <a href="{{route('logout')}}" onclick="event.preventDefault();

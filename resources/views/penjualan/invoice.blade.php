@@ -134,7 +134,7 @@
                         </form>
                         @endif
                         @if($data->total >= 200 && isset($data->deadline))
-                        <button class="btn btn-primary" type="button">Surat Perjanjian</button>
+                        <a class="btn btn-primary" href="/suratPerjanjian/{{$data->no_transaksi}}">Surat Perjanjian</a>
                         @endif
                         
                     </div>
