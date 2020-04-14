@@ -9,6 +9,7 @@ use App\PenjualanTunai;
 use App\PenjualanKredit;
 use App\BarangPembelian;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class PenjualanController extends Controller
 {
@@ -61,6 +62,7 @@ class PenjualanController extends Controller
      */
     public function storeTunai(Request $request)
     {
+        $petugas = Auth::user();
         $data = new DataDiri;
         $data->nama = $request->nama;
         $data->noID = $request->noID;
@@ -77,6 +79,7 @@ class PenjualanController extends Controller
         $numpadded = sprintf("%05d", getNextId('penjualan_tunais'));
         $prefix = "TN";
         $penjualanTunai->no_transaksi = $prefix.$numpadded;
+        $penjualanTunai->petugas = $petugas->name;
         $penjualanTunai->save();
 
         if($request->namaBarang1 != "Pilih"){
@@ -127,6 +130,7 @@ class PenjualanController extends Controller
     }
     public function storeKredit(Request $request)
     {
+        $petugas = Auth::user();
         $idBarang = DB::table('barangs')->select('id')->where('namaBarang', $request->namaBarang)->where('harga', $request->harga)->first();
         $data = new DataDiri;
         $data->nama = $request->nama;
@@ -142,11 +146,11 @@ class PenjualanController extends Controller
         $penjualanKredit->total = $request->totalPembelian;
         $penjualanKredit->tanggal = $request->tanggal;
         $penjualanKredit->deadline = $request->deadline;
-        $penjualanKredit->alamat_pengiriman = $request->alamat_pengiriman;
         $numpadded = sprintf("%05d", getNextId('penjualan_kredits'));
         $prefix = "KR";
         $penjualanKredit->no_transaksi = $prefix.$numpadded;
         $penjualanKredit->status = 0;
+        $penjualanKredit->petugas = $petugas->name;
         $penjualanKredit->save();
 
         if($request->namaBarang1 != "Pilih"){

@@ -21,11 +21,11 @@
             <input required type="text" onchange="changeHarga(1)" class="form-control" id="kuantitas1" name="kuantitas1" value="">
         </div>
         <div class="form-group col-2">
-        <label for="harga1">Harga Satuan</label>
+        <label for="harga1">Harga Satuan (Rp.)</label>
             <input required type="text" class="form-control" id="harga1" name="harga1" readonly>
         </div>
         <div class="form-group col-2">
-        <label for="harga1">Total</label>
+        <label for="harga1">Total (Rp.)</label>
             <input required type="text" class="form-control" id="totalharga1" name="totalharga1" readonly>
         </div>
     </div>
@@ -110,7 +110,7 @@
         <input required type="date" class="form-control" id="tanggal" name="tanggal">
     </div>
     <div class="form-group">
-        <label for="totalPembelian">Total Pembelian</label>
+        <label for="totalPembelian">Total Pembelian (Rp.)</label>
         <input required type="text" class="form-control" id="totalPembelian" name="totalPembelian" readonly>
     </div>
         <input type="text" id="namaBarang1" name="namaBarang1" hidden>

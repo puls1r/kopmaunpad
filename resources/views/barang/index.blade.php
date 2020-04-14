@@ -20,7 +20,7 @@
     <tr>
       <th scope="row">{{$loop->iteration}}</th>
       <td>{{$barang->namaBarang}}</td>
-      <td>{{$barang->harga}}</td>
+      <td>Rp. {{number_format($barang->harga,2,',','.')}}</td>
     </tr>
     @endforeach
   </tbody>

@@ -10,7 +10,7 @@
         <input required type="text" class="form-control" id="namaBarang" name="namaBarang" placeholder="Masukkan Nama">
     </div>
     <div class="form-group">
-        <label for="harga">Harga</label>
+        <label for="harga">Harga (Rp.)</label>
         <input required type="text" class="form-control" id="harga" name="harga" placeholder="Masukkan Nomor Identitas">
     </div>
         <button type="submit" class="btn btn-primary">Submit</button>

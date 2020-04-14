@@ -20,39 +20,39 @@
           <div class="products">
             <h3 class="title">Checkout</h3>
             <div class="item">
-              <span class="price">{{$data->totalharga1}}</span>
+              <span class="price">Rp. {{number_format($data->totalharga1,2,',','.')}}</span>
               <p class="item-name">{{$data->namaBarang1}}</p>
-              <p class="item-description">{{$data->harga1}} X {{$data->kuantitas1}}</p>
+              <p class="item-description">Rp. {{number_format($data->harga1,2,',','.')}} X {{$data->kuantitas1}}</p>
             </div>
             @if($data->namaBarang2)
             <div class="item">
-              <span class="price">{{$data->totalharga2}}</span>
+              <span class="price">Rp. {{number_format($data->totalharga2,2,',','.')}}</span>
               <p class="item-name">{{$data->namaBarang2}}</p>
-              <p class="item-description">{{$data->harga2}} X {{$data->kuantitas2}}</p>
+              <p class="item-description">Rp. {{number_format($data->harga2,2,',','.')}} X {{$data->kuantitas2}}</p>
             </div>
             @endif
             @if($data->namaBarang3)
             <div class="item">
-              <span class="price">{{$data->totalharga3}}</span>
+            <span class="price">Rp. {{number_format($data->totalharga3,2,',','.')}}</span>
               <p class="item-name">{{$data->namaBarang3}}</p>
-              <p class="item-description">{{$data->harga3}} X {{$data->kuantitas3}}</p>
+              <p class="item-description">Rp. {{number_format($data->harga3,2,',','.')}} X {{$data->kuantitas3}}</p>
             </div>
             @endif
             @if($data->namaBarang4)
             <div class="item">
-              <span class="price">{{$data->totalharga4}}</span>
+            <span class="price">Rp. {{number_format($data->totalharga4,2,',','.')}}</span>
               <p class="item-name">{{$data->namaBarang4}}</p>
-              <p class="item-description">{{$data->harga4}} X {{$data->kuantitas4}}</p>
+              <p class="item-description">Rp. {{number_format($data->harga4,2,',','.')}} X {{$data->kuantitas4}}</p>
             </div>
             @endif
             @if($data->namaBarang5)
             <div class="item">
-              <span class="price">{{$data->totalharga5}}</span>
+            <span class="price">Rp. {{number_format($data->totalharga5,2,',','.')}}</span>
               <p class="item-name">{{$data->namaBarang5}}</p>
-              <p class="item-description">{{$data->harga5}} X {{$data->kuantitas5}}</p>
+              <p class="item-description">Rp. {{number_format($data->harga5,2,',','.')}} X {{$data->kuantitas5}}</p>
             </div>
             @endif
-            <div class="total">Total<span class="price">{{$data->totalPembelian}}</span></div>
+            <div class="total">Total<span class="price">Rp. {{number_format($data->totalPembelian,2,',','.')}}</span></div>
           </div>
           <div class="card-details">
             <h3 class="title">Billing Details</h3>

@@ -13,9 +13,7 @@
 </head>
 <body>
 
-<div class="container">
-<!-- Simple Invoice - START -->
-<div class="container">
+<div class="container" style="padding-bottom:30px">
     <div class="row">
         <div class="col-xs-12">
             <div class="text-center">
@@ -49,7 +47,7 @@
                 </div>
                 <div class="col-xs-12 col-md-3 col-lg-3">
                     <div class="panel panel-default height">
-                        <div class="panel-heading">Status Pembayaran</div>
+                        <div class="panel-heading">Payment Status</div>
                         <div class="panel-body">
                             <strong>Status Pembayaran:</strong> 
                             @isset($data->deadline)
@@ -67,14 +65,10 @@
                 </div>
                 <div class="col-xs-12 col-md-3 col-lg-3 pull-right">
                     <div class="panel panel-default height">
-                        <div class="panel-heading">Shipping Address</div>
+                        <div class="panel-heading">Petugas</div>
                         <div class="panel-body">
-                            @isset($data->alamat_pengiriman)
-                            <strong>{{$data->nama}}:</strong><br>
-                            {{$data->alamat_pengiriman}}<br>
-                            @else
-                            -
-                            @endif
+                            <strong>Nama: </strong>{{$data->petugas}}<br>
+                            <strong>Tanda Tangan: </strong><br>
                         </div>
                     </div>
                 </div>
@@ -102,46 +96,55 @@
                                 @foreach($barangPembelian as $barang)
                                 <tr>
                                     <td>{{$barang->namaBarang}}</td>
-                                    <td class="text-center">Rp. {{$barang->harga}}</td>
+                                    <td class="text-center">Rp. {{number_format($barang->harga,2,',','.')}}</td>
                                     <td class="text-center">{{$barang->kuantitas}}</td>
-                                    <td class="text-right">Rp. {{$barang->harga * $barang->kuantitas}}</td>
+                                    <td class="text-right">Rp. {{number_format($barang->harga * $barang->kuantitas,2,',','.')}}</td>
                                 @endforeach
                                 </tr>
                                     <td class="highrow"></td>
                                     <td class="highrow"></td>
-                                    <td class="highrow text-center"><strong>Subtotal</strong></td>
-                                    <td class="highrow text-right">Rp.{{$data->total}}</td>
-                                </tr>
-                                <tr>
-                                    <td class="emptyrow"></td>
-                                    <td class="emptyrow"></td>
-                                    <td class="emptyrow text-center"><strong>Shipping</strong></td>
-                                    <td class="emptyrow text-right">Rp.15000</td>
-                                </tr>
-                                <tr>
-                                    <td class="emptyrow"><i class="fa fa-barcode iconbig"></i></td>
-                                    <td class="emptyrow"></td>
-                                    <td class="emptyrow text-center"><strong>Total</strong></td>
-                                    <td class="emptyrow text-right">Rp.{{$data->total + 15000}}</td>
-                                </tr>
+                                    <td class="highrow text-center"><strong>Total</strong></td>
+                                    <td class="highrow text-right">Rp.{{number_format($data->total,2,',','.')}}</td>
+                                </tr>                                
                             </tbody>
                         </table>
-                        @if(Request::get('submit')=='yes')
-                        <button class="btn btn-success" form="submitForm">Bayar</button>
-                        <form id="submitForm" action="/submitPembayaran" method="post">
-                        @csrf
-                            <input type="text" name="no_transaksi" value="{{$data->no_transaksi}}" hidden>
-                        </form>
-                        @endif
-                        @if($data->total >= 200 && isset($data->deadline))
-                        <a class="btn btn-primary" href="/suratPerjanjian/{{$data->no_transaksi}}">Surat Perjanjian</a>
-                        @endif
                         
                     </div>
                 </div>
             </div>
         </div>
     </div>
+        <div class="row">
+                        @if(Request::get('submit')=='yes')
+                        <div style="display:inline-block;">
+                        <button class="btn btn-success" form="submitForm">Bayar</button>
+                        <form id="submitForm" action="/submitPembayaran" method="post">
+                        @csrf
+                            <input type="text" name="no_transaksi" value="{{$data->no_transaksi}}" hidden>
+                        </form>
+                        @endif
+                        </div>
+                        <div style="display:inline-block">
+                        @if($data->total >= 200000 && isset($data->deadline))
+                        <a class="btn btn-primary" href="/suratPerjanjian/{{$data->no_transaksi}}">Surat Perjanjian</a>
+                        @endif
+                        </div>
+                        <div style="display:inline-block">
+                        @isset($data->status)
+                            @if($data->status == 0)
+                        <a class="btn btn-primary" href="/suratPerjanjian/{{$data->no_transaksi}}">Invoice</a>
+                        @else
+                        <a class="btn btn-primary" href="/suratPerjanjian/{{$data->no_transaksi}}">Bukti Transaksi</a>
+                        @endif
+                        @endisset
+                        </div>
+                        <div style="display:inline-block">
+                        @if(!isset($data->deadline))
+                        <a class="btn btn-primary" href="/suratPerjanjian/{{$data->no_transaksi}}">Bukti Transaksi</a>
+                        @endif
+                    
+                        </div>
+        </div>
 </div>
 
 <style>
@@ -173,8 +176,6 @@
 </style>
 
 <!-- Simple Invoice - END -->
-
-</div>
 
 </body>
 </html>

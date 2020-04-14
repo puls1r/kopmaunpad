@@ -26,6 +26,7 @@
                     <th scope="col">Nama Pembeli</th>
                     <th scope="col">Tanggal Transaksi</th>
                     <th scope="col">Total</th>
+                    <th scope="col">Petugas</th>
                     <th scope="col">Kwitansi</th>
                     </tr>
                 </thead>
@@ -36,7 +37,8 @@
                     <td>{{$data->no_transaksi}}</td>
                     <td>{{$data->nama}}</td>
                     <td>{{$data->tanggal}}</td>
-                    <td>Rp. {{$data->total}}</td>
+                    <td>Rp. {{number_format($data->total,2,',','.')}}</td>
+                    <td>{{$data->petugas}}</td>
                     <td><button form="invoiceTunai{{$loop->iteration}}" type="submit" class="btn btn-primary">Lihat</button></td>
                     </tr>
                     <form action="/invoice" method="GET" id="invoiceTunai{{$loop->iteration}}">
@@ -55,6 +57,8 @@
                     <th scope="col">Nama Pembeli</th>
                     <th scope="col">Tanggal Transaksi</th>
                     <th scope="col">Deadline</th>
+                    <th scope="col">Total</th>
+                    <th scope="col">Petugas</th>
                     <th scope="col">Status Pembayaran</th>
                     <th scope="col">Kwitansi</th>
                     </tr>
@@ -67,6 +71,8 @@
                     <td>{{$data->nama}}</td>
                     <td>{{$data->tanggal}}</td>
                     <td>{{$data->deadline}}</td>
+                    <td>Rp. {{number_format($data->total,2,',','.')}}</td>
+                    <td>{{$data->petugas}}</td>
                     <td>@if($data->status == 1)Lunas
                         @else
                         Belum Lunas
