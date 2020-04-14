@@ -2,7 +2,7 @@
 @section('title','Penjualan - Kopma Unpad')
 @section('content')
 <div class="container">
-    <h1>Data Pembeli</h1>
+    <h1>Data Barang</h1>
     <form method="POST" action="">
     @csrf
     <div class="form-group">
