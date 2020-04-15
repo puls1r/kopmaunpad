@@ -59,6 +59,18 @@ class PrintPDF extends Controller
         ->join('barangs','barang_pembelians.barang_id','=','barangs.id')
         ->select('penjualan_kredits.*','data_diris.*','barangs.*','barang_pembelians.*')
         ->get();
+        if($data==NULL){
+            $data = DB::table('penjualan_tunais')->where('no_transaksi', $id)
+          ->join('data_diris','penjualan_tunais.user_id','=','data_diris.id')
+          ->select('penjualan_tunais.*','data_diris.*')
+          ->first();
+          $barangPembelian = DB::table('penjualan_tunais')->where('penjualan_tunais.no_transaksi', $id)
+          ->join('data_diris','penjualan_tunais.user_id','=','data_diris.id')
+          ->join('barang_pembelians','penjualan_tunais.no_transaksi','=','barang_pembelians.no_transaksi')
+          ->join('barangs','barang_pembelians.barang_id','=','barangs.id')
+          ->select('penjualan_tunais.*','data_diris.*','barangs.*','barang_pembelians.*')
+          ->get();
+        }
         $user = Auth::user();
       $pdf = \PDF::loadView('print.bukti_transaksi', ['data' => $data, 'barangPembelian' => $barangPembelian, 'user' => $user]);  
       return $pdf->download('bukti_transaksi.pdf');

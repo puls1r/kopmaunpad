@@ -12,7 +12,7 @@
         <h4><strong>Koperasi Mahasiswa Universitas Padjadjaran</strong><br>
         Invoice</h4>
    </center>
-   <p>Telah diterima pelunasan barang oleh : </p><br>
+   <p>Telah diterima pelunasan barang oleh : </p>
    <table>
         <tr>
             <td><strong>Nama Pembeli </strong></td>

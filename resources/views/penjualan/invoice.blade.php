@@ -139,7 +139,7 @@
                         </div>
                         <div style="display:inline-block">
                         @if(!isset($data->deadline))
-                        <a class="btn btn-primary" href="/suratPerjanjian/{{$data->no_transaksi}}">Bukti Transaksi</a>
+                        <a class="btn btn-primary" href="/buktiTransaksi/{{$data->no_transaksi}}">Bukti Transaksi</a>
                         @endif
                     
                         </div>
