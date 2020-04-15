@@ -7,6 +7,10 @@ use App\Barang;
 
 class BarangController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
     public function index(){
         $barangs = Barang::all();
         return view('barang.index', ['barangs' => $barangs]);

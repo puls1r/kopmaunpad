@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\Auth;
 
 class PrintPDF extends Controller
 {
+  public function __construct(){
+    $this->middleware('auth');
+}
+
     public function SuratPerjanjian($id){
         // This  $data array will be passed to our PDF blade
         $data = DB::table('penjualan_kredits')->where('no_transaksi', $id)
