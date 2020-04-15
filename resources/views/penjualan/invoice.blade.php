@@ -68,7 +68,6 @@
                         <div class="panel-heading">Petugas</div>
                         <div class="panel-body">
                             <strong>Nama: </strong>{{$data->petugas}}<br>
-                            <strong>Tanda Tangan: </strong><br>
                         </div>
                     </div>
                 </div>
@@ -134,7 +133,7 @@
                             @if($data->status == 0)
                         <a class="btn btn-primary" href="/invoicePrint/{{$data->no_transaksi}}">Invoice</a>
                         @else
-                        <a class="btn btn-primary" href="/suratPerjanjian/{{$data->no_transaksi}}">Bukti Transaksi</a>
+                        <a class="btn btn-primary" href="/buktiTransaksi/{{$data->no_transaksi}}">Bukti Transaksi</a>
                         @endif
                         @endisset
                         </div>

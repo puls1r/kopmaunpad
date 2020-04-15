@@ -12,6 +12,7 @@
         <h4><strong>Koperasi Mahasiswa Universitas Padjadjaran</strong><br>
         Invoice</h4>
    </center>
+   <p>Telah diterima pelunasan barang oleh : </p><br>
    <table>
         <tr>
             <td><strong>Nama Pembeli </strong></td>
@@ -27,11 +28,6 @@
             <td><strong>Nomor Transaksi </strong></td>
             <td>:</td>
             <td> {{$data->no_transaksi}}</td>
-        </tr>
-        <tr>
-            <td><strong>Tanggal Jatuh Tempo Pembayaran </strong></td>
-            <td>:</td>
-            <td> {{date('j F, Y', strtotime($data->deadline))}}</td>
         </tr>
    </table>
    <br>
@@ -63,12 +59,15 @@
    </table>
    <table class="table table-borderless">
         <tr>
+            <td>Pembeli</td>
             <td>Petugas KOPMA Unpad</td>
         </tr>
         <tr>
             <td> </td>
+            <td> </td>
         </tr>
         <tr>
+            <td>{{$data->nama}}</td>
             <td>{{$user->name}}</td>
         </tr>
     </table>
