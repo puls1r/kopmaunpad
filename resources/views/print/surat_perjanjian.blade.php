@@ -79,8 +79,8 @@
             <td scope="row">{{$loop->iteration}}</td>
             <td>{{$barang->namaBarang}}</td>
             <td>{{$barang->kuantitas}}</td>
-            <td>{{$barang->harga}}</td>
-            <td>{{$barang->harga * $barang->kuantitas}}</td>
+            <td>Rp. {{number_format($barang->harga,2,',','.')}}</td>
+            <td>Rp. {{number_format($barang->harga * $barang->kuantitas,2,',','.')}}</td>
         </tr>
         @endforeach
    </table>

@@ -27,7 +27,7 @@
                     <th scope="col">Tanggal Transaksi</th>
                     <th scope="col">Total</th>
                     <th scope="col">Petugas</th>
-                    <th scope="col">Kwitansi</th>
+                    <th scope="col">Kelengkapan</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -60,7 +60,7 @@
                     <th scope="col">Total</th>
                     <th scope="col">Petugas</th>
                     <th scope="col">Status Pembayaran</th>
-                    <th scope="col">Kwitansi</th>
+                    <th scope="col">Kelengkapan</th>
                     </tr>
                 </thead>
                 <tbody>
