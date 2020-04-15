@@ -84,7 +84,7 @@
         </tr>
         @endforeach
    </table>
-   <p>Pihak I (Pertama) berjanji akan melakukan pembayaran pada tanggal {{$data->deadline}} kepada Pihak II (kedua) dan jika perjanjian dilanggar maka akan diberlakukan denda Rp50,000/hari dan akan diakumuluasikan dengan jumlah piutang yang dimiliki oleh Pihak I (Pertama). </p>
+   <p>Pihak I (Pertama) berjanji akan melakukan pembayaran pada tanggal {{date('j F, Y', strtotime($data->deadline))}} kepada Pihak II (kedua) dan jika perjanjian dilanggar maka akan diberlakukan denda Rp50,000/hari dan akan diakumuluasikan dengan jumlah piutang yang dimiliki oleh Pihak I (Pertama). </p>
     <table class="table table-borderless">
         <tr>
             <td>Pihak pertama</td>

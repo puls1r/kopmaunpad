@@ -36,7 +36,7 @@
                     <th scope="row">{{$loop->iteration}}</th>
                     <td>{{$data->no_transaksi}}</td>
                     <td>{{$data->nama}}</td>
-                    <td>{{$data->tanggal}}</td>
+                    <td>{{date('j F, Y', strtotime($data->tanggal))}}</td>
                     <td>Rp. {{number_format($data->total,2,',','.')}}</td>
                     <td>{{$data->petugas}}</td>
                     <td><button form="invoiceTunai{{$loop->iteration}}" type="submit" class="btn btn-primary">Lihat</button></td>
@@ -69,8 +69,8 @@
                     <th scope="row">{{$loop->iteration}}</th>
                     <td>{{$data->no_transaksi}}</td>
                     <td>{{$data->nama}}</td>
-                    <td>{{$data->tanggal}}</td>
-                    <td>{{$data->deadline}}</td>
+                    <td>{{date('j F, Y', strtotime($data->tanggal))}}</td>
+                    <td>{{date('j F, Y', strtotime($data->deadline))}}</td>
                     <td>Rp. {{number_format($data->total,2,',','.')}}</td>
                     <td>{{$data->petugas}}</td>
                     <td>@if($data->status == 1)Lunas

@@ -34,10 +34,10 @@
                     <div class="panel panel-default height">
                         <div class="panel-heading">Payment Information</div>
                         <div class="panel-body">
-                            <strong>Tanggal Transaksi:</strong> {{$data->tanggal}}<br>
+                            <strong>Tanggal Transaksi:</strong> {{date('j F, Y', strtotime($data->tanggal))}}<br>
                             <strong>Tanggal Jatuh Tempo: </strong> 
                             @isset($data->deadline)
-                            {{$data->deadline}}
+                            {{date('j F, Y', strtotime($data->deadline))}}
                             @else
                             <b>-</b>
                             @endisset
@@ -132,7 +132,7 @@
                         <div style="display:inline-block">
                         @isset($data->status)
                             @if($data->status == 0)
-                        <a class="btn btn-primary" href="/suratPerjanjian/{{$data->no_transaksi}}">Invoice</a>
+                        <a class="btn btn-primary" href="/invoicePrint/{{$data->no_transaksi}}">Invoice</a>
                         @else
                         <a class="btn btn-primary" href="/suratPerjanjian/{{$data->no_transaksi}}">Bukti Transaksi</a>
                         @endif
