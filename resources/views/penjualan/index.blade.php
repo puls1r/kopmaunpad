@@ -32,7 +32,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                @foreach($dataTunai as $data)
+                @foreach($dataTunai->sortByDesc('tanggal') as $data)
                     <tr>
                     <th scope="row">{{$loop->iteration}}</th>
                     <td>{{$data->no_transaksi}}</td>
@@ -66,7 +66,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                @foreach($dataKredit as $data)
+                @foreach($dataKredit->sortByDesc('tanggal') as $data)
                     <tr>
                     <th scope="row">{{$loop->iteration}}</th>
                     <td>{{$data->no_transaksi}}</td>

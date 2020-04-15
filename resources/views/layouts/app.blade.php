@@ -27,7 +27,7 @@
 		  		<h1><a href="/" class="logo">Kopma Unpad</a></h1>
 	        <ul class="list-unstyled components mb-5">
 	          <li class="{{ (request()->is('/')) ? 'active' : '' }}">
-	            <a href="/"><span class=" mr-3"></span>Dashboard</a>
+	            <a href="/"><span class=" mr-3"></span>Manual</a>
 	          </li>
 	          <li class="{{ (request()->is('penjualan*')) ? 'active' : '' }}">
 	              <a href="/penjualan"><span class=" mr-3"></span>Penjualan</a>
