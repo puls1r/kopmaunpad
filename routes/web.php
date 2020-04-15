@@ -33,6 +33,8 @@ Auth::routes();
 Route::get('/suratPerjanjian/{no_transaksi}', [ 'as' => 'suratPerjanjian', 'uses' => 'PrintPDF@suratPerjanjian']);
 Route::get('/invoicePrint/{no_transaksi}', [ 'as' => 'invoicePrint', 'uses' => 'PrintPDF@invoice']);
 Route::get('/buktiTransaksi/{no_transaksi}', [ 'as' => 'buktiTransaksi', 'uses' => 'PrintPDF@buktiTransaksi']);
+Route::get('/cetakTunai', 'PrintPDF@cetakTunai');
+Route::get('/cetakKredit', 'PrintPDF@cetakKredit');
 Route::get('printEx', function(){
     return view('print.invoice');
 });

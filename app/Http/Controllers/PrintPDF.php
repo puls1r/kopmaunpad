@@ -59,4 +59,24 @@ class PrintPDF extends Controller
       $pdf = \PDF::loadView('print.bukti_transaksi', ['data' => $data, 'barangPembelian' => $barangPembelian, 'user' => $user]);  
       return $pdf->download('bukti_transaksi.pdf');
     }
+
+    public function cetakTunai(){
+        // This  $data array will be passed to our PDF blade
+        $data = DB::table('penjualan_tunais')
+                    ->join('data_diris','penjualan_tunais.user_id','=','data_diris.id')
+                    ->select('penjualan_tunais.*','data_diris.nama')
+                    ->get();
+      $pdf = \PDF::loadView('print.laporan_tunai', ['dataTunai' => $data]);  
+      return $pdf->download('laporan_tunai.pdf');
+    }
+
+    public function cetakKredit(){
+        // This  $data array will be passed to our PDF blade
+        $data = DB::table('penjualan_kredits')
+                    ->join('data_diris','penjualan_kredits.user_id','=','data_diris.id')
+                    ->select('penjualan_kredits.*','data_diris.nama')
+                    ->get();
+      $pdf = \PDF::loadView('print.laporan_kredit', ['dataKredit' => $data]);  
+      return $pdf->download('laporan_kredit.pdf');
+    }
 }

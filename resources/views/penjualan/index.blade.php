@@ -18,6 +18,7 @@
      </ul>
     <div class="tab-content">
         <div id="tunai" class="tab-pane fade show active">
+            <a href="/cetakTunai" class="btn btn-primary">Cetak Laporan Tunai</a>
             <table class="table">
                 <thead>
                     <tr>
@@ -49,6 +50,7 @@
             </table>
         </div>
         <div id="kredit" class="tab-pane fade">
+        <a href="/cetakKredit" class="btn btn-primary">Cetak Laporan Kredit</a>
             <table class="table">
                 <thead>
                     <tr>
