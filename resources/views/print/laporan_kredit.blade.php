@@ -9,9 +9,9 @@
 </head>
 <body>
     <center>
-    <h4>Koperasi Mahasiswa Universitas Padjadjaran<br>
+    <h5>Koperasi Mahasiswa Universitas Padjadjaran<br>
         Laporan Penjualan Kredit
-        </h4>
+        </h5>
     </center>
 
     <table style="font-size:12px" class="table table-bordered">
@@ -20,7 +20,7 @@
         <th scope="col">No. Transaksi</th>
         <th scope="col">Nama Pembeli</th>
         <th scope="col">Tanggal Transaksi</th>
-        <th scope="col">Deadline</th>
+        <th scope="col">Jatuh Tempo</th>
         <th scope="col">Total</th>
         <th scope="col">Petugas</th>
         <th scope="col">Status Pembayaran</th>

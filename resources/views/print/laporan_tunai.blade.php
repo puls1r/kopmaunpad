@@ -9,12 +9,12 @@
 </head>
 <body>
     <center>
-    <h4>Koperasi Mahasiswa Universitas Padjadjaran<br>
+    <h5>Koperasi Mahasiswa Universitas Padjadjaran<br>
         Laporan Penjualan Tunai
-        </h4>
+        </h5>
     </center>
 
-    <table class="table table-bordered">
+    <table style="font-size:12px" class="table table-bordered">
         <tr>
             <th scope="col">No.</th>
             <th scope="col">No. Transaksi</th>

@@ -66,7 +66,7 @@ class PrintPDF extends Controller
                     ->join('data_diris','penjualan_tunais.user_id','=','data_diris.id')
                     ->select('penjualan_tunais.*','data_diris.nama')
                     ->get();
-      $pdf = \PDF::loadView('print.laporan_tunai', ['dataTunai' => $data]);  
+      $pdf = \PDF::loadView('print.laporan_tunai', ['dataTunai' => $data])->setPaper('a4', 'landscape');  
       return $pdf->download('laporan_tunai.pdf');
     }
 
@@ -76,7 +76,7 @@ class PrintPDF extends Controller
                     ->join('data_diris','penjualan_kredits.user_id','=','data_diris.id')
                     ->select('penjualan_kredits.*','data_diris.nama')
                     ->get();
-      $pdf = \PDF::loadView('print.laporan_kredit', ['dataKredit' => $data]);  
+      $pdf = \PDF::loadView('print.laporan_kredit', ['dataKredit' => $data])->setPaper('a4', 'landscape');  
       return $pdf->download('laporan_kredit.pdf');
     }
 }

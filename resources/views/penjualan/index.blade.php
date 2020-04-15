@@ -58,7 +58,7 @@
                     <th scope="col">No. Transaksi</th>
                     <th scope="col">Nama Pembeli</th>
                     <th scope="col">Tanggal Transaksi</th>
-                    <th scope="col">Deadline</th>
+                    <th scope="col">Jatuh Tempo</th>
                     <th scope="col">Total</th>
                     <th scope="col">Petugas</th>
                     <th scope="col">Status Pembayaran</th>
