@@ -10,7 +10,7 @@
 <body style="font-family: 'Times New Roman', Times, serif;">
     <center>
         <h4><strong>Koperasi Mahasiswa Universitas Padjadjaran</strong><br>
-        Invoice</h4>
+        Kwitansi Pembayaran</h4>
    </center>
    <p>Telah diterima pelunasan barang oleh : </p>
    <table>
